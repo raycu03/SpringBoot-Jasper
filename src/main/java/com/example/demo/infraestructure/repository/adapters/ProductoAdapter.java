@@ -2,12 +2,14 @@ package com.example.demo.infraestructure.repository.adapters;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
@@ -81,7 +83,7 @@ public class ProductoAdapter implements ProductoService{
 	@Override
 	public String report() throws FileNotFoundException, JRException{
 		String path = "C:\\Users\\ID_0007\\Downloads";
-		List<ProductoDto> productos = productoRepository.findAll();
+		List<ProductoDto> productos = productoRepository.findAll( Sort.by(Sort.Direction.ASC, "nombre"));
 		File file = ResourceUtils.getFile("src\\main\\resources\\productos.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(productos);
