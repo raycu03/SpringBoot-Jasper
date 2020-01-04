@@ -14,7 +14,7 @@ public class ExceptionsHandler {
 	
 private static final Logger LOG= Logger.getLogger(ExceptionsHandler.class.getName());
 	
-	/*ExceptionHandler(Exception.class)
+	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public ErrorCode handleExeption(Exception e) {
 		ErrorCode ec= new ErrorCode();
@@ -24,7 +24,7 @@ private static final Logger LOG= Logger.getLogger(ExceptionsHandler.class.getNam
 
 		
 		return ec;
-	}*/
+	}
 	
 	@ExceptionHandler(RegistroNoEncontradoExeception.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
